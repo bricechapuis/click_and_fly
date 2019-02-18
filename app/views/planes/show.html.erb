@@ -1,3 +1,30 @@
-<h3> <%= @plane.title %> </h3>
-<br>
-<%= @plane.description %>
+<div class="container">
+  <div class="plane-title">
+    <h1> <%= @plane.title %> </h1>
+  </div>
+  <div class="registration-model">
+    Model : <%= @plane.model %> - Registrations number: <%= @plane.registration_number %>
+  </div>
+  <div class="container">
+    <p class="plane-image"> <%= image_tag "plane_by_default.jpeg" %> </p>
+  </div>
+  <div class="description">
+    <%= @plane.description %>
+  </div>
+  <div class="price-capacity">
+    <i class="fas fa-euro-sign"></i> <%= @plane.price %> - <i class="fas fa-users"></i> <%= @plane.capacity %>
+  </div>
+  <div class="autonomy">
+    Maximum distance : <%= @plane.autonomy %> kms
+  </div>
+  <div class="airfield">
+    <i class="fas fa-map-marked-alt"></i> <%= @plane.airfield %>
+  </div>
+  <div class="pilot">
+    Pilot : <% if @plane.pilot %>
+              <i class="far fa-check-square"></i>
+              <% else %>
+              <i class="far fa-square"></i>
+            <% end %>
+  </div>
+</div>
