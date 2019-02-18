@@ -15,7 +15,7 @@ class PlanesController < ApplicationController
     @plane = Plane.new(plane_params)
     @plane.user_id = current_user.id
     if @plane.save
-      redirect_to plane_path(@plane)
+      redirect_to planes_path
     else
       render :new
     end
