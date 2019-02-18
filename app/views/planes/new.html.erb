@@ -1,0 +1,14 @@
+<h3>Add a new plane</h3>
+
+<%= simple_form_for :plane do |f| %>
+  <%= f.input :title %>
+  <%= f.input :model %>
+  <%= f.textarea :description %>
+  <%= f.input :price %>
+  <%= f.input :autonomy %>
+  <%= f.input :capacity %>
+  <%= f.input :airfield %>
+  <%= f.input :registration_number %>
+  <%= f.check_box :pilot %>
+  <%= f.submit %>
+<% end %>
