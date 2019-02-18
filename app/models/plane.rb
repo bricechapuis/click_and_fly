@@ -1,4 +1,5 @@
 class Plane < ApplicationRecord
   belongs_to :user
-  validates :title, :description, :capacity, :autonomy, :price, :registration_number, :airfield, :pilot, :model, presence: true, allow_blank: false
+  validates :pilot, default: false
+  validates :title, :description, :capacity, :autonomy, :price, :registration_number, :airfield, :model, presence: true, allow_blank: false
 end
