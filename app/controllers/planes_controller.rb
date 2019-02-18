@@ -13,6 +13,7 @@ class PlanesController < ApplicationController
 
   def create
     @plane = Plane.new(plane_params)
+    @plane.user_id = current_user.id
     if @plane.save
       redirect_to plane_path(@plane)
     else
@@ -26,6 +27,7 @@ class PlanesController < ApplicationController
 
   def update
     @plane = Plane.find(params[:id])
+    @plane.user_id = current_user.id
     @plane.update(plane_params)
     if @plane.save
       redirect_to plane_path(@plane)
