@@ -14,11 +14,11 @@ def show?
 end
 
 def edit?
-  record.user == user
+  record.user == user  || user.admin
 end
 
 def update?
-  record.user == user
+  record.user == user  || user.admin
 end
 
 def destroy?
