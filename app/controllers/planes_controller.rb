@@ -6,6 +6,7 @@ class PlanesController < ApplicationController
 
   def show
     @plane = Plane.find(params[:id])
+    authorize @plane
   end
 
   def new
