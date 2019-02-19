@@ -11,6 +11,10 @@ class PlanesController < ApplicationController
     @plane = Plane.new
   end
 
+  def search
+    @planes = Plane.all
+  end
+
   def create
     @plane = Plane.new(plane_params)
     @plane.user_id = current_user.id
