@@ -1,8 +1,6 @@
 <div class="container">
-  <h1>Your bookings</h1>
-  <br>
   <div class="row">
-    <h3>My future bookings</h3>
+    <h1>My future bookings</h1>
     <% @bookings.each do |booking| %>
       <div class='col-xs-12 col-sm-6'>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/1600x900/?plane,jet');">
@@ -20,7 +18,7 @@
     <% end %>
   </div>
   <div class="row">
-    <h3>Future bookings for my planes</h3>
+    <h1>Future bookings for my planes</h1>
     <% @bookings_for_my_planes.each do |booking| %>
       <div class='col-xs-12 col-sm-6'>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/1600x900/?plane,jet');">
