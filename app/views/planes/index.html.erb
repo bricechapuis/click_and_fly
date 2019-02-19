@@ -5,22 +5,23 @@
   <div class="row">
     <% @planes.each do |plane| %>
       <div class="col-xs-12 col-sm-6">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/1600x900/?plane,jet');">
-          <div class="card-category"><%= "#{plane.autonomy} km"%></div>
-          <div class="card-description">
-            <h2><%= plane.title %></h2>
-            <p><%= plane.description %></p>
+        <%= link_to plane_path(plane) do %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/1600x900/?plane,jet');">
+            <div class="card-category"><%= "#{plane.autonomy} km"%></div>
+            <div class="card-description">
+              <h2><%= plane.title %></h2>
+              <p><%= plane.description %></p>
+            </div>
+            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
           </div>
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <a class="card-link" href="#" ></a>
+          <div class="card-footer">
+            <ul class="list-inline">
+              <li><%= plane.price %> €</li>
+              <li><i class="fas fa-users"></i> <%= plane.capacity %> people</li>
+            </ul>
+          </div>
         </div>
-        <div class="card-footer">
-          <ul class="list-inline">
-            <li><%= plane.price %> €</li>
-            <li><i class="fas fa-users"></i> <%= plane.capacity %> people</li>
-          </ul>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
