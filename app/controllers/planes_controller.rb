@@ -29,6 +29,7 @@ class PlanesController < ApplicationController
 
   def edit
     @plane = Plane.find(params[:id])
+    authorize @plane
   end
 
   def update
