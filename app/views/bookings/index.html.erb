@@ -3,11 +3,13 @@
     <h1>My future bookings</h1>
     <% @bookings.each do |booking| %>
       <div class='col-xs-12 col-sm-6'>
+        <%= link_to plane_booking_path(booking.plane, booking) do %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/1600x900/?plane,jet');">
           <div class="card-description">
             <h2> <%= booking.plane.title %> </h2>
           </div>
         </div>
+        <% end %>
         <div class="card-footer">
           <ul class="list-inline">
             <li><h4>Start Date: <%= booking.start_date %></h4></li>
@@ -23,11 +25,13 @@
     <h1>Future bookings for my planes</h1>
     <% @bookings_for_my_planes.each do |booking| %>
       <div class='col-xs-12 col-sm-6'>
+        <%= link_to plane_booking_path(booking.plane, booking) do %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/1600x900/?plane,jet');">
           <div class="card-description">
             <h2> <%= booking.plane.title %> </h2>
           </div>
         </div>
+        <% end %>
         <div class="card-footer">
           <ul class="list-inline">
             <li><h4>Start Date: <%= booking.start_date %></h4></li>
