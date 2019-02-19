@@ -55,6 +55,6 @@ class PlanesController < ApplicationController
   private
 
   def plane_params
-    params.require(:plane).permit(:title, :description, :registration_number, :pilot, :autonomy, :capacity, :model, :airfield, :price)
+    params.require(:plane).permit(:title, :description, :registration_number, :pilot, :autonomy, :capacity, :model, :airfield, :price, :photo)
   end
 end
