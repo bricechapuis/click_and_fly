@@ -27,4 +27,10 @@
               <i class="far fa-square"></i>
             <% end %>
   </div>
+  <div>
+  <% if policy(@plane).destroy? %>
+    <%= link_to "Delete plane", plane_path(@plane), method: :delete,
+        data: { confirm: "Are you sure?" } %>
+  <% end %>
+</div>
 </div>

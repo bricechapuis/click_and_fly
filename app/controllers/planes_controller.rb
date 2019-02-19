@@ -42,6 +42,8 @@ class PlanesController < ApplicationController
 
   def destroy
     @plane = Plane.find(params[:id])
+    authorize @plane
+    @plane.user = current_user
     @plane.destroy
     redirect_to planes_path
   end
