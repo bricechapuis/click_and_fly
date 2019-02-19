@@ -1,4 +1,23 @@
-<%= "Booking for #{@booking.plane.title}" %>
-
-<%= @booking.start_date %>
-<%= @booking.end_date %>
+<div>
+  <h1> <%= "Booking for #{@booking.plane.title}" %> </h1>
+</div>
+<div>
+  <p class="plane-image"> <%= image_tag "plane_by_default.jpeg", style: "height:auto;width:30%" %> </p>
+</div>
+<div class="registration-model">
+    Model : <%= @booking.plane.model %> - Registrations number: <%= @booking.plane.registration_number %>
+</div>
+<br>
+<div class="booking-dates">
+  <p><%= "Booking start date : #{@booking.start_date} - Booking end date : #{@booking.start_date}" %></p>
+</div>
+<div class="booking-other-details">
+  <i class="fas fa-euro-sign"></i> <%= @booking.plane.price %> - <i class="fas fa-users"></i> <%= @booking.plane.capacity %> - <i class="fas fa-map-marked-alt"></i> <%= @booking.plane.airfield %>
+</div>
+<div class="booking-pilot">
+  Pilot : <% if @booking.plane.pilot %>
+              <i class="fas fa-check-circle"></i>
+              <% else %>
+              <i class="fas fa-times"></i>
+            <% end %>
+</div>
