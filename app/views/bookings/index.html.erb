@@ -35,7 +35,8 @@
           </ul>
           <h4>Status: <%= booking.status %></h4>
           <div class="btn-confirm">
-          <%= link_to 'Confirm booking', confirm_path %>
+            <%= link_to 'Confirm', confirm_path(booking), method: :patch %>
+            <%= link_to 'Decline', decline_path(booking), method: :patch %>
           </div>
         </div>
       </div>

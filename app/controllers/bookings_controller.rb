@@ -52,10 +52,22 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
   end
 
-  def confirm_booking(argument)
+  def confirm_booking
+    skip_authorization
     @booking = Booking.find(params[:id])
-    @booking.status = argument
+    @plane = @booking.plane
+    @booking.status = "confirmed"
     @booking.save
+    redirect_to bookings_path
+  end
+
+  def decline_booking
+    skip_authorization
+    @booking = Booking.find(params[:id])
+    @plane = @booking.plane
+    @booking.status = "declined"
+    @booking.save
+    redirect_to bookings_path
   end
 
   private
