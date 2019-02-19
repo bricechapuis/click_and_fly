@@ -19,7 +19,7 @@ class PlanesController < ApplicationController
     authorize @plane
     @plane.user = current_user
     if @plane.save
-      redirect_to plane_path(@plane)
+      redirect_to planes_path
     else
       render :new
     end
@@ -31,6 +31,7 @@ class PlanesController < ApplicationController
 
   def update
     @plane = Plane.find(params[:id])
+    @plane.user_id = current_user.id
     @plane.update(plane_params)
     if @plane.save
       redirect_to plane_path(@plane)

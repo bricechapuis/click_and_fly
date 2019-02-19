@@ -5,10 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "Generating Fake Database..."
+
+10.times do
+  User.create(
+    email: Faker::Internet.email,
+    password: 'tititoto',
+    name: Faker::Name.name,
+    phone_number: Faker::PhoneNumber.cell_phone)
+end
+
 10.times do
 	Plane.create(
-		user: User.find_by_id(1),
-		title: Faker::FunnyName.name, 
+		user: User.find_by_id(rand(0..9)),
+		title: Faker::FunnyName.name,
 		price: Faker::Number.number(4),
 		autonomy: Faker::Number.number(4),
 		model: Faker::Vehicle.model,
@@ -18,3 +28,13 @@
 		registration_number: Faker::Vehicle.license_plate,
 		airfield: Faker::Address.street_address)
 end
+
+10.times do
+  Booking.create(
+    start_date: Faker::Date.forward(23),
+    end_date: Faker::Date.between(24.days.from_now, 25.days.from_now),
+    user_id: rand(0..9),
+    plane_id: rand(0..9))
+end
+
+puts "Done!"
