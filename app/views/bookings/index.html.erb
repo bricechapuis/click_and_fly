@@ -13,6 +13,8 @@
             <li><h4>Start Date: <%= booking.start_date %></h4></li>
             <li><h4>End Date: <%= booking.end_date %></h4></li>
           </ul>
+          <%= link_to 'Delete Booking', plane_booking_path(booking.plane, booking), method: :delete, data: { confirm: 'Are you sure ?'} %>
+          <%= link_to 'Edit Booking', edit_plane_booking_path(booking.plane, booking) %>
         </div>
       </div>
     <% end %>
