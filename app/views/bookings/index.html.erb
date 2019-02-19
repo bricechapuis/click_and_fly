@@ -1,7 +1,26 @@
 <h3>Your bookings</h3>
 <br>
-<ul>
-  <% @bookings.each do |booking| %>
-  <li><%= booking.start_date %> <%= booking.end_date %> <%= booking.plane.title %> </li>
-  <% end %>
-</ul>
+<div class="row">
+    <h3>My future bookings</h3>
+    <% @bookings.each do |booking| %>
+    <div class='col-xs-4'>
+      <div class="your-booking">
+      <h5> <%= booking.plane.title %> </h5>
+      <h5> Start Date :<%= booking.start_date %> </h5>
+      <h5> End Date :<%= booking.end_date %> </h5>
+      </div>
+    </div>
+    <% end %>
+</div>
+<div class="row">
+    <h3>Future bookings for my planes</h3>
+    <% @bookings_for_my_planes.each do |booking| %>
+    <div class='col-xs-4'>
+      <div class="your-booking">
+      <h5> <%= booking.plane.title %> </h5>
+      <h5> Start Date :<%= booking.start_date %> </h5>
+      <h5> End Date :<%= booking.end_date %> </h5>
+      </div>
+    </div>
+    <% end %>
+</div>
