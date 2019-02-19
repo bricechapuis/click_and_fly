@@ -1,6 +1,7 @@
 class PlanesController < ApplicationController
   def index
-    @planes = Plane.all
+    # @planes = Plane.all
+    @planes = policy_scope(Plane).order(created_at: :desc)
   end
 
   def show
@@ -9,10 +10,13 @@ class PlanesController < ApplicationController
 
   def new
     @plane = Plane.new
+    authorize @plane
   end
 
   def create
     @plane = Plane.new(plane_params)
+    authorize @plane
+    @plane.user = current_user
     if @plane.save
       redirect_to plane_path(@plane)
     else
