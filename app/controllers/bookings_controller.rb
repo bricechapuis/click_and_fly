@@ -7,16 +7,19 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def new
     @plane = Plane.find(params[:plane_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
     @plane = Plane.find(params[:plane_id])
+    authorize @booking
     @booking.user_id = current_user.id
     @booking.plane_id = @plane.id
     if @booking.save
