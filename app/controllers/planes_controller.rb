@@ -9,6 +9,17 @@ class PlanesController < ApplicationController
     authorize @plane
   end
 
+  def search
+    raise
+    if @search.present?
+      @airfield = @search["airfield"]
+      @capacity = @search["capacity"]
+      @startDate = @search["startDate"]
+      @endDate = @search["endDate"]
+      @planes = Plane.where(airfield: @airfield, capacity: @capacity, startDate: @startDate, endDate: @endDate)
+    end
+  end
+
   def new
     @plane = Plane.new
     authorize @plane
