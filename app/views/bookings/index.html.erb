@@ -33,6 +33,10 @@
             <li><h4>Start Date: <%= booking.start_date %></h4></li>
             <li><h4>End Date: <%= booking.end_date %></h4></li>
           </ul>
+          <h4>Status: <%= booking.status %></h4>
+          <div class="btn-confirm">
+          <%= link_to 'Confirm booking', confirm_path %>
+          </div>
         </div>
       </div>
     <% end %>

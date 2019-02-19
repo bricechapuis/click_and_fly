@@ -7,16 +7,19 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def new
     @plane = Plane.find(params[:plane_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
     @plane = Plane.find(params[:plane_id])
+    authorize @booking
     @booking.user_id = current_user.id
     @booking.plane_id = @plane.id
     if @booking.save
@@ -28,11 +31,13 @@ class BookingsController < ApplicationController
   def edit
     @booking = Booking.find(params[:id])
     @plane = Plane.find(params[:plane_id])
+    authorize @booking
   end
 
   def update
     @booking = Booking.find(params[:id])
     @plane = Plane.find(params[:plane_id])
+    authorize @booking
     @booking.update(booking_params)
     if @booking.save
       redirect_to plane_booking_path(@plane, @booking)
@@ -42,8 +47,15 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.destroy
     redirect_to bookings_path
+  end
+
+  def confirm_booking(argument)
+    @booking = Booking.find(params[:id])
+    @booking.status = argument
+    @booking.save
   end
 
   private
