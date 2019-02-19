@@ -1,13 +1,10 @@
-<div class="container">
   <div class="plane-title">
     <h1> <%= @plane.title %> </h1>
   </div>
   <div class="registration-model">
     Model : <%= @plane.model %> - Registrations number: <%= @plane.registration_number %>
   </div>
-  <div class="container">
-    <p class="plane-image"> <%= image_tag "plane_by_default.jpeg" %> </p>
-  </div>
+    <p class="plane-image"> <%= image_tag "plane_by_default.jpeg", style: "height:auto;width:30%" %> </p>
   <div class="description">
     <%= @plane.description %>
   </div>
@@ -22,17 +19,17 @@
   </div>
   <div class="pilot">
     Pilot : <% if @plane.pilot %>
-              <i class="far fa-check-square"></i>
+              <i class="fas fa-check-circle"></i>
               <% else %>
-              <i class="far fa-square"></i>
+              <i class="fas fa-times"></i>
             <% end %>
   </div>
-  <div>
-  <% if policy(@plane).destroy? %>
-    <%= link_to "Delete plane", plane_path(@plane), method: :delete,
-        data: { confirm: "Are you sure?" } %>
-  <% end %>
-</div>
-</div>
+  <div class="plane-delete-book">
+    <div>
+      <% if policy(@plane).destroy? %>
+        <%= link_to "Delete plane", plane_path(@plane), method: :delete,
+            data: { confirm: "Are you sure?" } %>
+      <% end %> - <%= link_to 'Book this Plane', new_plane_booking_path(@plane) %>
+    </div>
+  </div>
 
-<%= link_to 'Book this Plane', new_plane_booking_path(@plane) %>
