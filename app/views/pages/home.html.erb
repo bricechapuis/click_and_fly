@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.2) 0%, rgba(0,36,61,0.2) 50%), url('https://images.pexels.com/photos/91217/pexels-photo-91217.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
   <div class="banner-content">
     <div class="main-title">
       <p>
@@ -21,9 +21,9 @@
           <label for="inputCapacity" class="sr-only">Capacity</label>
           <input type="number" class="form-control" id="inputCapacity" placeholder="Capacity">
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Go!</button>
+        <%= link_to 'Go!', planes_path, class: "btn btn-primary" %>
+          <!-- <button type="submit" class="btn btn-primary mb-2">Go!</button> -->
       </form>
     </div>
   </div>
-
 </div>
