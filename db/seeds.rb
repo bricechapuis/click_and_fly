@@ -40,7 +40,7 @@ User.create(
 end
 
 Plane.create(
-  user: User.find_by_id(0),
+  user: User.find_by_id(1),
   title: 'Great plane for business trips!',
   price: 5000,
   model: 'Dassault Falcon 2000',
@@ -52,7 +52,7 @@ Plane.create(
   airfield: 'Aéroport de Paris - Le Bourget')
 
 Plane.create(
-  user: User.find_by_id(1),
+  user: User.find_by_id(2),
   title: 'Great experience for aerobatic fans',
   price: 1500,
   model: 'Dassault/Dornier Alpha Jet',
@@ -64,7 +64,7 @@ Plane.create(
   airfield: 'Aérodrome de Lognes - Emerainville')
 
 Plane.create(
-  user: User.find_by_id(0),
+  user: User.find_by_id(1),
   title: "For ol'times lovers :)",
   price: 1750,
   model: 'Messerschmitt Bf 109 E-3',
@@ -76,7 +76,7 @@ Plane.create(
   airfield: 'Aérodrome de Toussus-le-Noble')
 
 Plane.create(
-  user: User.find_by_id(2),
+  user: User.find_by_id(3),
   title: 'A perfect plane for leisure week-ends',
   price: 1800,
   model: 'Cessna Citation Mustang ',
@@ -88,7 +88,7 @@ Plane.create(
   airfield: 'Aérodrome Coulommiers-Voisins')
 
 Plane.create(
-  user: User.find_by_id(3),
+  user: User.find_by_id(4),
   title: 'Awesome paper plane',
   price: 1,
   model: 'Oxford 21x29,7cm',
