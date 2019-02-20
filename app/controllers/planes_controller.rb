@@ -31,12 +31,12 @@ class PlanesController < ApplicationController
   def edit
     @plane = Plane.find(params[:id])
     authorize @plane
-    @plane.user = current_user
   end
 
   def update
     @plane = Plane.find(params[:id])
     @plane.user_id = current_user.id
+    authorize @plane
     @plane.update(plane_params)
     if @plane.save
       redirect_to plane_path(@plane)
