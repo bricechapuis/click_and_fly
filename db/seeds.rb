@@ -11,25 +11,25 @@ User.create(
   email: 'yahya@fly.co',
   password: 'tititoto',
   name: 'Yahya Fallah',
-  phone_number: 0674309117)
+  phone_number: 674309117)
 
 User.create(
   email: 'benoit@fly.co',
   password: 'tititoto',
   name: 'Benoit Roualec',
-  phone_number: 0784562496)
+  phone_number: 784562496)
 
 User.create(
   email: 'guillaume@fly.co',
   password: 'tititoto',
   name: 'Guillaume Ecollan',
-  phone_number: 0615632734)
+  phone_number: 615632734)
 
 User.create(
   email: 'brice@fly.co',
   password: 'tititoto',
   name: 'Brice Chapuis',
-  phone_number: 0664248116)
+  phone_number: 664248116)
 
 10.times do
   User.create(
@@ -41,7 +41,7 @@ end
 
 Plane.create(
   user: User.find_by_id(0),
-  title: 'Great plane for business trips!'
+  title: 'Great plane for business trips!',
   price: 5000,
   model: 'Dassault Falcon 2000',
   autonomy: 5797,
@@ -88,9 +88,9 @@ Plane.create(
   airfield: 'Aérodrome Coulommiers-Voisins')
 
 Plane.create(
-  user: 3,
+  user: User.find_by_id(3),
   title: 'Awesome paper plane',
-  price: 1
+  price: 1,
   model: 'Oxford 21x29,7cm',
   autonomy: 0,
   pilot: false,
