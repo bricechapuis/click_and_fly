@@ -27,9 +27,9 @@
   <div class="plane-delete-book">
     <div>
       <% if policy(@plane).destroy? %>
-        <%= link_to "Delete plane", plane_path(@plane), method: :delete,
+        <%= link_to "Delete plane -", plane_path(@plane), method: :delete,
             data: { confirm: "Are you sure?" } %>
-      <% end %> - <%= link_to 'Book this Plane', new_plane_booking_path(@plane) %>
+      <% end %> <%= link_to 'Book this Plane', new_plane_booking_path(@plane) %>
     </div>
   </div>
 
