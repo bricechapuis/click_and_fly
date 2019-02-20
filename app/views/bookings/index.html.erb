@@ -4,7 +4,7 @@
     <% @bookings.each do |booking| %>
       <div class='col-xs-12 col-sm-6'>
         <%= link_to plane_booking_path(booking.plane, booking) do %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path = @plane.photo.present? ? (cl_image_tag @plane.photo, height: 200, width: 300, crop: :fill) : "" %>);">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path = booking.plane.photo.present? ? (cl_image_tag @plane.photo, height: 200, width: 300, crop: :fill) : "" %>);">
           <div class="card-description">
             <h2> <%= booking.plane.title %> </h2>
           </div>
