@@ -4,7 +4,7 @@
   <div class="registration-model">
     Model : <%= @plane.model %> - Registrations number: <%= @plane.registration_number %>
   </div>
-    <p class="plane-image"> <%= cl_image_tag @plane.photo, height: 300, width: 400, crop: :fill %> </p>
+    <p class="plane-image"> <% image_path = @plane.photo.present? ? cl_image_path(plane.photo) : "" %> </p>
   <div class="description">
     <%= @plane.description %>
   </div>
@@ -27,9 +27,9 @@
   <div class="plane-delete-book">
     <div>
       <% if policy(@plane).destroy? %>
-        <%= link_to "Delete plane", plane_path(@plane), method: :delete,
+        <%= link_to "Delete plane -", plane_path(@plane), method: :delete,
             data: { confirm: "Are you sure?" } %>
-      <% end %> - <%= link_to 'Book this Plane', new_plane_booking_path(@plane) %>
+      <% end %> <%= link_to 'Book this Plane', new_plane_booking_path(@plane) %>
     </div>
   </div>
 
