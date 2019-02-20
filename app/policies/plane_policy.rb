@@ -5,25 +5,25 @@ class PlanePolicy < ApplicationPolicy
     end
   end
 
-def create?
-  true
-end
+  def create?
+    true
+  end
 
-def show?
-  true
-end
+  def show?
+    true
+  end
 
-def edit?
-  record.user == user  || user.admin
-end
-
-def update?
-  record.user == user  || user.admin
-end
-
-def destroy?
-  if user
+  def edit?
     record.user == user || user.admin
   end
-end
+
+  def update?
+    record.user == user || user.admin
+  end
+
+  def destroy?
+    if user
+      record.user == user || user.admin
+    end
+  end
 end
