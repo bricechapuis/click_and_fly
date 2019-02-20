@@ -5,6 +5,8 @@
 
       <%= simple_form_for @plane do |f| %>
         <%= f.input :title %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
         <%= f.input :model %>
         <%= f.input :description %>
         <%= f.input :price %>
