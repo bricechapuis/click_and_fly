@@ -31,6 +31,7 @@ class PlanesController < ApplicationController
   def edit
     @plane = Plane.find(params[:id])
     authorize @plane
+    @plane.user = current_user
   end
 
   def update
