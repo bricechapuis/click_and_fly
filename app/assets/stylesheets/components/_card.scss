@@ -52,3 +52,7 @@
 .card-footer {
   margin-left: 12px;
 }
+.card-link-footer:hover {
+  text-decoration: none;
+  color: $blue;
+}
