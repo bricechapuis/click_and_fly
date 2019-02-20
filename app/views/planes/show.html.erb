@@ -29,7 +29,7 @@
       <% if policy(@plane).destroy? %>
         <%= link_to "Delete plane -", plane_path(@plane), method: :delete,
             data: { confirm: "Are you sure?" } %>
-      <% end %> <% if policy(@plane).update? %>
+      <% end %> <% if current_user && current_user.admin? %>
         <%= link_to "Edit plane -", edit_plane_path(@plane) %>
       <% end %> <%= link_to 'Book this Plane', new_plane_booking_path(@plane) %>
     </div>
