@@ -85,7 +85,7 @@ Plane.create(
   description: "The Cessna Mustang is similar in size to the CJ1, but does not inherit the basic design of the Citation fuselage and the Mustang cabin volume is slightly smaller than that of the CJ1. The diameter of the fuselage has been reduced, so the ergonomics cabin has not a perfectly circular cross-section, but an extended area in the legs and shoulders of the passengers. In the cabin, which has been finished on a qualitative level much more than in the Citation jets, which have been produced in recent years, there are 4 passenger seats opposite each other, tables can be arranged in the space between them. The cabins have oval-shaped windows and are located at the level of the passengers' eyes. Cabin length 2.97m. (Except cab), width 1.40m. and height 1.37m. Luggage compartment, which is not available to passengers during the flight, has a volume of 1.8 cubic meters.",
   capacity: 4,
   registration_number: 'C-FPCE',
-  airfield: 'Aérodrome Coulommiers-Voisins')
+  airfield: "Aérodrome de Saint-Cyr-l'École")
 
 Plane.create(
   user: User.find_by_id(4),
