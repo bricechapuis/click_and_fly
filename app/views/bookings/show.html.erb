@@ -2,7 +2,7 @@
   <h1> <%= "Booking for #{@booking.plane.title}" %> </h1>
 </div>
 <div>
-  <p class="plane-image"> <%= image_tag "plane_by_default.jpeg", style: "height:auto;width:30%" %> </p>
+  <p class="plane-image"> <%= image_tag = @booking.plane.photo.present? ? (cl_image_tag @booking.plane.photo, height: 300, width: 400, crop: :fill) : "" %> </p>
 </div>
 <div class="registration-model">
     Model : <%= @booking.plane.model %> - Registrations number: <%= @booking.plane.registration_number %>
