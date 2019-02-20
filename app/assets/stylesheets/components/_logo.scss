@@ -2,11 +2,11 @@
 	display: flex;
 	font-size: 40px;
 	align-items: center;
-	// i:hover {
-	// 	transform: rotateX(1080deg);
-	// 	transition: 8s;
-	// 	margin-left: 45vw;
-	// }
+	i:hover {
+    transition: margin-left 12s, transform 4s 2s;
+		transform: rotateX(720deg) scale(1.2);
+		margin-left: 55vw;
+	}
 	h3 {
 	font-family: Sorts Mill Goudy;
 	margin: 0 0 0 10px;
