@@ -3,12 +3,12 @@ class PlanesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
   def index
-    #@planes = Plane.all
     @planes = policy_scope(Plane).order(created_at: :desc)
   end
 
   def show
     @plane = Plane.find(params[:id])
+    @marker = { lat: @plane.latitude, lng: @plane.longitude }
     authorize @plane
   end
 
