@@ -6,11 +6,10 @@ class PlanesController < ApplicationController
   def index
     if params[:where].present? || params[:capacity].present? || params[:start].present? || params[:end].present?
       params[:capacity] = 0 if params[:capacity] == ''
-      query = "planes.airfield ILIKE :where \
-               AND planes.capacity >= :capacity"
+      query = "planes.capacity >= :capacity"
       params[:start] = Date.today.to_s if params[:start] == ''
       params[:end] = params[:start] if params[:end] == ''
-      planes = Plane.where(query, where: "%#{params[:where]}%", capacity: "#{params[:capacity]}")
+      planes = Plane.near(params[:where].to_s, 100).where(query, capacity: params[:capacity].to_s)
       @planes = []
       planes.each do |plane|
         available_arr = []
