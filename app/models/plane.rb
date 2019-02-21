@@ -1,5 +1,6 @@
 class Plane < ApplicationRecord
   belongs_to :user
+  has_many :bookings
   geocoded_by :airfield
   after_validation :geocode, if: :will_save_change_to_airfield?
   validates :pilot, default: false

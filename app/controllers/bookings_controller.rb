@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     @booking.user_id = current_user.id
     @booking.plane_id = @plane.id
     if @booking.save
-      redirect_to plane_booking_path(@plane, @booking)
+      redirect_to bookings_path
     else render :new
     end
   end
@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.update(booking_params)
     if @booking.save
-      redirect_to plane_booking_path(@plane, @booking)
+      redirect_to bookings_path
     else render :new
     end
   end
