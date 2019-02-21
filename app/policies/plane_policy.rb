@@ -18,7 +18,9 @@ class PlanePolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user || user.admin
+    if user
+      record.user == user || user.admin
+    end
   end
 
   def destroy?
