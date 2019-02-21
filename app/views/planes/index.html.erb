@@ -1,8 +1,5 @@
-<h1>Planes List</h1>
-<br>
-
-<div class="container">
-  <div class="row">
+<div class="container planesIndexContainer">
+  <div class="row cardsResults">
     <% @planes.each do |plane| %>
       <div class="col-xs-12 col-sm-6 index-cards">
         <%= link_to plane_path(plane), class: "card-link-footer" do %>
@@ -24,11 +21,13 @@
       <% end %>
     <% end %>
   </div>
-  <div
-    id="map"
-    style="width: 100%;
-    height: 600px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="row">
+    <div
+      id="map"
+      style="width: 400px;
+      height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>
