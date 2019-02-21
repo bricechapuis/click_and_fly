@@ -1,9 +1,18 @@
 class PlanesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: :show
+  skip_after_action :verify_policy_scoped, only: :index
 
   def index
-    @planes = policy_scope(Plane).order(created_at: :desc)
+    if params[:where].present? || params[:capacity].present? || (params[:start].present? && params[:end].present?)
+      params[:capacity] = 0 if params[:capacity] == ''
+      query = "plane.airfield ILIKE :where \
+               AND plane.capacity >= :capacity"
+
+      @planes = Plane.joins(:bookings).where(query, where: "%#{params[:where]}%", capacity: "#{params[:capacity]}")
+    else
+      @planes = policy_scope(Plane).order(created_at: :desc)
+    end
   end
 
   def show

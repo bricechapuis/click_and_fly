@@ -4,7 +4,34 @@
       <p>
         <span id="banner-typed-text"></span>
       </p>
-      <form class="form-inline">
+      <%= form_tag planes_path, method: :get do %>
+        <%= text_field_tag :where,
+        params[:where],
+        id: "inputCity",
+        class: "form-control",
+        placeholder: "City"
+        %>
+        <%= date_field_tag :start,
+        params[:start],
+        min: Date.today,
+        placeholder: "Start date",
+        class: "form-control"
+        %>
+        <%= date_field_tag :end,
+        params[:end],
+        min: Date.today,
+        class: "form-control",
+        placeholder: "Find a plane"
+        %>
+        <%= number_field_tag :capacity,
+        params[:capacity],
+        min: 0,
+        class: "form-control",
+        placeholder: "Capacity"
+        %>
+        <%= submit_tag 'Go!', class: 'btn btn-primary' %>
+      <% end %>
+<!--       <form class="form-inline">
         <div class="form-group mx-sm-3 mb-2">
           <label for="inputRegion" class="sr-only">City</label>
           <input type="text" class="form-control" id="inputRegion" placeholder="City">
@@ -21,8 +48,7 @@
           <label for="inputCapacity" class="sr-only">Capacity</label>
           <input type="number" min="0" class="form-control" id="inputCapacity" placeholder="Capacity">
         </div>
-        <%= link_to 'Go!', planes_path, class: "btn btn-primary" %>
-          <!-- <button type="submit" class="btn btn-primary mb-2">Go!</button> -->
+           <button type="submit" class="btn btn-primary mb-2">Go!</button> -->
       </form>
     </div>
   </div>
