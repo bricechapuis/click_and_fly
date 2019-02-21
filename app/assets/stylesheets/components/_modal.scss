@@ -2,6 +2,12 @@
 	justify-content: space-evenly;
 }
 
+#editPlaneModal {
+	h3 {
+		margin-top: 20px !important;
+	}
+}
+
 .modal-header {
 	text-align: center;
 	h3 {
@@ -9,9 +15,14 @@
 	}
 }
 
-#modalNewBookinBody {
+#modaldeletePlane {
+	text-align: center;
 }
 
 #modalNewBookingFooter {
 	text-align: center;
+}
+
+#modalEditPlaneBody {
+	padding: 20px 40px;
 }
