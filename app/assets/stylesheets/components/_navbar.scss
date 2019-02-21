@@ -37,6 +37,9 @@
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
+  i {
+    margin: 0 5px;
+  }
 }
 
 /* Navbar link */
@@ -79,3 +82,27 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+.status-icon {
+  height: 10px;
+  width: 10px;
+}
+
+.avatar-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.dropdown-icon {
+  position: absolute;
+  top: 65px;
+  right: 20px;
+}
+
+.burger-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+

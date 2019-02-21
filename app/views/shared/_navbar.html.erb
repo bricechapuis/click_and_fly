@@ -19,12 +19,29 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
+          <% result_arr = [] %>
+          <% current_user.planes.each do |plane| %>
+            <% plane.bookings.each do |booking| %>
+              <% if booking.status == 'pending' %>
+                <% status = true %>
+              <% else %>
+                <% status = false %>
+              <% end %>
+              <% result_arr << status %>
+            <% end %>
+          <% end %>
+          <% if result_arr.include?(true) %>
+            <%= image_tag "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/large-red-circle_1f534.png", class: "status-icon avatar-icon" %>
+          <% end %>
           <%= image_tag "https://avatars0.githubusercontent.com/u/45921830?s=400&v=4", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to 'Booking Manager', bookings_path %>
             </li>
             <li>
+              <% if result_arr.include?(true) %>
+                <%= image_tag "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/large-red-circle_1f534.png", class: "status-icon dropdown-icon" %>
+              <% end %>
               <%= link_to 'Plane Manager', myplanes_path(current_user) %>
             </li>
             <li>
@@ -54,9 +71,19 @@
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
+          <% if result_arr.include?(true) %>
+            <%= image_tag "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/large-red-circle_1f534.png", class: "status-icon burger-icon" %>
+          <% end %>
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><%= link_to 'Bookings Manager', bookings_path %></li>
+        <li><%= link_to 'Booking Manager', bookings_path %></li>
+        <li>
+          <% if result_arr.include?(true) %>
+            <%= image_tag "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/large-red-circle_1f534.png", class: "status-icon dropdown-icon" %>
+          <% end %>
+
+          <%= link_to 'Plane Manager', bookings_path %>
+          </li>
         <li><a href="#">Other one</a></li>
         <li><a href="#">Other one</a></li>
       </ul>
