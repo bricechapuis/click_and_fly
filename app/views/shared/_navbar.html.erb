@@ -20,7 +20,11 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% result_arr = [] %>
+<<<<<<< HEAD
           <% if user_signed_in? %>
+=======
+          <% if current_user %>
+>>>>>>> bbce5ee2afb96c8af8dec79f1b66d3a32aeeb157
             <% current_user.planes.each do |plane| %>
               <% plane.bookings.each do |booking| %>
                 <% if booking.status == 'pending' %>
