@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:my_planes]
+
   def my_planes
-    # @planes = Plane.where(user_id: current_user.id)
-    skip_authorization
-    @planes = Plane.where(user_id: current_user.id).order(created_at: :desc)
+    @user = current_user
+    authorize @user
+    @planes = current_user.planes.order(created_at: :desc)
   end
 end
