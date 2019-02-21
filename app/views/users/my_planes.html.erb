@@ -45,7 +45,7 @@
               <br>
               <ul class='my-plane-bookings'>
                 <% plane.bookings.each do |booking| %>
-                <li><%= "Name: #{booking.user.name} Date: #{booking.start_date} - #{booking.end_date}" %> <%= link_to 'Confirm', confirm_path %> <%= link_to 'Decline', decline_path %></li>
+                <li><%= "Name: #{booking.user.name} Date: #{booking.start_date} - #{booking.end_date} #{booking.status}" %> <%= link_to 'Confirm', confirm_path(booking), method: :patch %> <%= link_to 'Decline', decline_path(booking), method: :patch %></li>
                 <% end %>
               </ul>
             </div>

@@ -58,7 +58,7 @@ class BookingsController < ApplicationController
     @plane = @booking.plane
     @booking.status = "confirmed"
     @booking.save
-    # redirect_to bookings_path
+    redirect_to myplanes_path
   end
 
   def decline_booking
@@ -67,7 +67,7 @@ class BookingsController < ApplicationController
     @plane = @booking.plane
     @booking.status = "declined"
     @booking.save
-    # redirect_to bookings_path
+    redirect_to myplanes_path
   end
 
   private
