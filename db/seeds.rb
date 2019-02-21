@@ -31,13 +31,11 @@ User.create(
   name: 'Brice Chapuis',
   phone_number: 664248116)
 
-10.times do
-  User.create(
-    email: Faker::Internet.email,
-    password: 'tititoto',
-    name: Faker::Name.name,
-    phone_number: Faker::PhoneNumber.cell_phone)
-end
+User.create(
+  email: 'admin@fly.co',
+  password: 'tititoto',
+  name: 'Admin',
+  phone_number: 1)
 
 Plane.create(
   user: User.find_by_id(1),
