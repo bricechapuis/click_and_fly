@@ -5,7 +5,7 @@
   <div class="row">
     <% @planes.each do |plane| %>
       <div class="col-xs-12 col-sm-6 index-cards">
-        <%= link_to plane_path(plane), class: "card-link-footer" do %>
+        <%# link_to plane_path(plane), class: "card-link-footer manage-card" do %>
           <% image_path = plane.photo.present? ? cl_image_path(plane.photo) : "" %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path %>');">
             <% result_arr = [] %>
@@ -25,9 +25,38 @@
               <h2><%= plane.title %></h2>
               <p><%= "#{plane.description.first(160)}..." %></p>
             </div>
+            <a href=<%= plane_path(plane) %>></a>
           </div>
-        <% end %>
-      <% end %>
-    </div>
+          <div class="card-footer">
+            <ul class="list-inline">
+              <li><%= plane.price %> €</li>
+              <li><i class="fas fa-users"></i> <%= plane.capacity %> people</li>
+              <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ManageBookingsModal">Manage bookings</button></li>
+            </ul>
+          </div>
+        </div>
+      <%# end %>
+      <div class="modal fade" id="ManageBookingsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="border-radius: 20px">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" id="myModalLabel">Bookings for <%= plane.model %></h3>
+              <br>
+              <ul class='my-plane-bookings'>
+                <% plane.bookings.each do |booking| %>
+                <li><%= "Name: #{booking.user.name} Date: #{booking.start_date} - #{booking.end_date}" %> <%= link_to 'Confirm', confirm_path %> <%= link_to 'Decline', decline_path %></li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="modal-body" id="modalNewBookinBody">
+              </div>
+              <div class="modal-footer" id="modalNewBookingFooter">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
