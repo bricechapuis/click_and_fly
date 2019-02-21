@@ -28,6 +28,13 @@ class PlanesController < ApplicationController
     else
       @planes = policy_scope(Plane).order(created_at: :desc)
     end
+
+    @markers = @planes.map do |plane|
+      {
+        lng: plane.longitude,
+        lat: plane.latitude
+      }
+    end
   end
 
   def show
