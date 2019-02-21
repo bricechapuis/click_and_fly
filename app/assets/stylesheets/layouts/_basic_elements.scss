@@ -10,3 +10,7 @@ h1 {
 h4 {
   font-size: 12px;
 }
+
+.flatpickr-calendar {
+  z-index: 10000 !important;
+}
