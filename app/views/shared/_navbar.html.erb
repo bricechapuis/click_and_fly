@@ -20,14 +20,16 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% result_arr = [] %>
-          <% current_user.planes.each do |plane| %>
-            <% plane.bookings.each do |booking| %>
-              <% if booking.status == 'pending' %>
-                <% status = true %>
-              <% else %>
-                <% status = false %>
+          <% if current_user %>
+            <% current_user.planes.each do |plane| %>
+              <% plane.bookings.each do |booking| %>
+                <% if booking.status == 'pending' %>
+                  <% status = true %>
+                <% else %>
+                  <% status = false %>
+                <% end %>
+                <% result_arr << status %>
               <% end %>
-              <% result_arr << status %>
             <% end %>
           <% end %>
           <% if result_arr.include?(true) %>
