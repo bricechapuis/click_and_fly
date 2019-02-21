@@ -4,12 +4,28 @@ class PlanesController < ApplicationController
   skip_after_action :verify_policy_scoped, only: :index
 
   def index
-    if params[:where].present? || params[:capacity].present? || (params[:start].present? && params[:end].present?)
+    if params[:where].present? || params[:capacity].present? || params[:start].present? || params[:end].present?
       params[:capacity] = 0 if params[:capacity] == ''
-      query = "plane.airfield ILIKE :where \
-               AND plane.capacity >= :capacity"
-
-      @planes = Plane.joins(:bookings).where(query, where: "%#{params[:where]}%", capacity: "#{params[:capacity]}")
+      query = "planes.airfield ILIKE :where \
+               AND planes.capacity >= :capacity"
+      params[:start] = Date.today.to_s if params[:start] == ''
+      params[:end] = params[:start] if params[:end] == ''
+      planes = Plane.where(query, where: "%#{params[:where]}%", capacity: "#{params[:capacity]}")
+      @planes = []
+      planes.each do |plane|
+        available_arr = []
+        unless plane.bookings.empty?
+          plane.bookings.each do |booking|
+            if (Date.parse(params[:start]) > booking.end_date) || (Date.parse(params[:end]) < booking.start_date)
+              available = true
+            else available = false
+            end
+            available_arr << available
+          end
+        end
+        @planes << plane unless available_arr.include?(false)
+      end
+      @planes
     else
       @planes = policy_scope(Plane).order(created_at: :desc)
     end

@@ -99,12 +99,12 @@ Plane.create(
   registration_number: 'Top Gun',
   airfield: 'Aéroport de Paris-Orly')
 
-10.times do
-  Booking.create(
-    start_date: Faker::Date.forward(23),
-    end_date: Faker::Date.between(24.days.from_now, 25.days.from_now),
-    user_id: rand(0..9),
-    plane_id: rand(0..9))
-end
+# 10.times do
+#   Booking.create(
+#     start_date: Faker::Date.forward(23),
+#     end_date: Faker::Date.between(24.days.from_now, 25.days.from_now),
+#     user_id: rand(0..9),
+#     plane_id: rand(0..9))
+# end
 
 puts "Done!"
