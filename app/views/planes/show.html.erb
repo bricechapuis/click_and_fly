@@ -27,17 +27,18 @@
   <div class="plane-delete-book">
     <div>
       <% if policy(@plane).destroy? %>
-        <%= link_to "Delete plane -", plane_path(@plane), method: :delete,
-            data: { confirm: "Are you sure?" } %>
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletePlaneModal">Delete My Plane</button>
       <% end %> <% if policy(@plane).update? %>
-        <%= link_to "Edit plane -", edit_plane_path(@plane) %>
+        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editPlaneModal">Edit My Plane</button>
       <% end %> 
-      <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Book This Plane!</button>
+      
+      
+      <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#newBookingModal">Book This Plane!</button>
     </div>
   </div>
 
   <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="newBookingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document" style="border-radius: 20px">
     <div class="modal-content">
       <div class="modal-header">
@@ -54,6 +55,58 @@
         <div class="modal-footer" id="modalNewBookingFooter">
           <%= f.button :submit, 'Book!', class: 'btn btn-primary' %>
           <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editPlaneModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document" style="border-radius: 20px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel editPlaneModal"></h3>
+          <h3><%= @plane.model %></h3>
+        </div>
+          <div class="modal-body" id="modalEditPlaneBody">
+            <%= simple_form_for @plane do |f| %>
+            <%= f.input :title %>
+            <%= f.input :photo %>
+            <%= f.input :photo_cache, as: :hidden %>
+            <%= f.input :model %>
+            <%= f.input :description %>
+            <%= f.input :price %>
+            <%= f.input :autonomy %>
+            <%= f.input :capacity %>
+            <%= f.input :airfield %>
+            <%= f.input :registration_number %>
+            <%= f.check_box :pilot %><span class="labelText">  Is There A Pilot In The Plane ?</span>
+            </div>
+        <div class="modal-footer" id="modalNewBookingFooter">
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cancel</button>
+          <%= f.button :submit, "Update Plane's Info", class: 'btn btn-primary btn-lg' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deletePlaneModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document" style="border-radius: 20px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">You are about to delete</h3>
+        <h3><%= @plane.model %></h3>
+        <h3>Are You Sure ?</h3>
+      </div>
+      <div class="modal-body" id="modaldeletePlane">
+        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
+        <%= link_to plane_path(@plane), method: :delete do %>
+          <button type="button" class="btn btn-danger btn-lg">Delete My Plane</button>
+        <% end %>
         </div>
       </div>
     </div>
