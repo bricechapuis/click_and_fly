@@ -30,3 +30,28 @@
 .my-plane-bookings {
   text-align: left;
 }
+
+.ManageBookingsDialog {
+  width: 60%;
+}
+
+.mybookings-card, .mybookings-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.confirmed_status {
+  color: green;
+  margin-left: 10px;
+}
+
+.pending_status {
+  color: orange;
+  margin-left: 10px;
+}
+
+.declined_status {
+  color: red;
+  margin-left: 10px;
+}

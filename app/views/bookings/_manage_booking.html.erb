@@ -1,0 +1,27 @@
+<div class="modal-content" id='modal-content'>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title" id="myModalLabel">Bookings for <%= plane.model %></h3>
+  </div>
+  <div class="modal-body" id="modalManageBookingsBody">
+    <ul class='my-plane-bookings'>
+      <% plane.bookings.each do |booking| %>
+      <li>
+        <div class="mybookings-card">
+          <div class="mybookings-info"><%= "Name: #{booking.user.name} - Date: #{booking.start_date} to #{booking.end_date} - Status: " %>
+            <span class="<%= "#{booking.status.downcase}_status" %>">
+              <%= booking.status.capitalize %>
+            </span>
+          </div>
+          <% while booking.status == 'pending' %>
+            <div class="mybookings-control"><%= link_to 'Confirm', confirm_path(booking), method: :patch, remote: :true %> <%= link_to 'Decline', decline_path(booking), method: :patch, remote: :true %></div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+    <div class="modal-footer" id="modalNewBookingFooter">
+    </div>
+  </div>
+</div>
