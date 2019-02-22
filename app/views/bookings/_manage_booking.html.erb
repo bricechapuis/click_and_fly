@@ -8,12 +8,12 @@
       <% plane.bookings.each do |booking| %>
       <li>
         <div class="mybookings-card">
-          <div class="mybookings-info"><%= "Name: #{booking.user.name} - Date: #{booking.start_date} to #{booking.end_date} - Status: " %>
-            <span class="<%= "#{booking.status.downcase}_status" %>">
+          <div class="mybookings-info"><%= "Name: #{booking.user.name} - Date: #{booking.start_date} to #{booking.end_date} - Status:" %>
+            <span class='<%= "#{booking.status}_status" %>'>
               <%= booking.status.capitalize %>
             </span>
           </div>
-          <% while booking.status == 'pending' %>
+          <% if booking.status == 'pending' %>
             <div class="mybookings-control"><%= link_to 'Confirm', confirm_path(booking), method: :patch, remote: :true %> <%= link_to 'Decline', decline_path(booking), method: :patch, remote: :true %></div>
             </div>
           <% end %>

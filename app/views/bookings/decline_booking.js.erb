@@ -1,6 +1,6 @@
-function refreshModal(outerHTML) {
+function refreshModalDeclined(outerHTML) {
   const newModal = document.getElementById('modal-content');
   newModal.outerHTML = outerHTML;
 }
 
-refreshModal('<%= j render "bookings/manage_booking", plane: @plane %>');
+refreshModalDeclined('<%= j render "manage_booking", plane: @plane %>');
