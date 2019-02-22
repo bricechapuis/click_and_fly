@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :planes
   has_many :bookings
+
+  mount_uploader :photo, PhotoUploader
 end

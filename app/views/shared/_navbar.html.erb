@@ -35,7 +35,7 @@
           <% if result_arr.include?(true) %>
             <%= image_tag "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/large-red-circle_1f534.png", class: "status-icon avatar-icon" %>
           <% end %>
-          <%= image_tag "https://avatars0.githubusercontent.com/u/45921830?s=400&v=4", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to 'Booking Manager', bookings_path %>
