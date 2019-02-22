@@ -1,7 +1,7 @@
 <div class="container planesIndexContainer">
   <div class="row cardsResults">
     <% @planes.each do |plane| %>
-      <div class="col-xs-12 col-sm-6 index-cards">
+      <div class="col-xs-12 col-sm-6">
         <%= link_to plane_path(plane), class: "card-link-footer" do %>
           <% image_path = plane.photo.present? ? cl_image_path(plane.photo) : "" %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path %>');">
@@ -14,7 +14,7 @@
           <div class="card-footer">
             <ul class="list-inline">
               <li><%= plane.price %> €</li>
-              <li><i class="fas fa-users"></i> <%= plane.capacity %></li>
+              <li><i class="fas fa-users"></i> <%= plane.capacity %> passager(s)</li>
             </ul>
           </div>
         </div>
