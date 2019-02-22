@@ -58,7 +58,10 @@ class BookingsController < ApplicationController
     @plane = @booking.plane
     @booking.status = "confirmed"
     @booking.save
-    redirect_to myplanes_path
+    respond_to do |format|
+      format.html { redirect_to myplanes_path }
+      format.js
+    end
   end
 
   def decline_booking
@@ -67,7 +70,10 @@ class BookingsController < ApplicationController
     @plane = @booking.plane
     @booking.status = "declined"
     @booking.save
-    redirect_to myplanes_path
+    respond_to do |format|
+      format.html { redirect_to myplanes_path }
+      format.js
+    end
   end
 
   private
