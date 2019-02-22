@@ -121,3 +121,22 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 
+
+<!-- Here some code for the reviews -->
+
+<h2>
+  <%= pluralize @plane.reviews.size, "review" %>
+</h2>
+
+<div id="reviews">
+  <% if @plane.reviews.blank? %>
+    Be the first to leave a review for <%= @plane.title %>
+  <% else %>
+    <% @plane.reviews.each do |review| %>
+      <p><%= review.content %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<%= render 'reviews/form', plane: @plane, review: @review %>
+

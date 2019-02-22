@@ -39,6 +39,7 @@ class PlanesController < ApplicationController
 
   def show
     @plane = Plane.find(params[:id])
+    @review = Review.new # <-- This is for the review.
     @booking = Booking.new
     @marker = [{ lat: @plane.latitude, lng: @plane.longitude }]
     authorize @plane
