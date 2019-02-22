@@ -1,4 +1,5 @@
 <div class="container">
+<<<<<<< HEAD
   <%= render 'planes/details', plane: @plane %>
   <div class="action">
     <div class="plane-delete-book">
@@ -7,24 +8,50 @@
           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletePlaneModal">Delete My Plane</button>
         <% end %> <% if policy(@plane).update? %>
           <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editPlaneModal">Edit My Plane</button>
+=======
+  <div class="top-show">
+    <%= render 'details', plane: @plane %>
+    <div
+      id="map"
+      style="width: 100%;
+      height: 600px;"
+      data-markers="<%= @marker.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+  </div>
+  <div class="bottom">
+    <div id="reviews">
+      <h2>
+        <%= pluralize @plane.reviews.size, "review" %>
+      </h2>
+      <% if @plane.reviews.blank? %>
+        Be the first to leave a review for <%= @plane.title %>
+      <% else %>
+        <% @plane.reviews.each do |review| %>
+          <p><%= review.content %></p>
+>>>>>>> 43fec4fafd2d200026a5dd161bf90ffcb3d67223
         <% end %>
+      <% end %>
+      <%= render 'reviews/form', plane: @plane, review: @review %>
+    </div>
+    <div class="action">
+        <div class="plane-delete-book">
+          <div>
+            <% if policy(@plane).destroy? %>
+              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletePlaneModal">Delete My Plane</button>
+            <% end %> <% if policy(@plane).update? %>
+              <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editPlaneModal">Edit My Plane</button>
+            <% end %>
 
 
-        <% if policy(@plane).destroy? %>
-        <% else %>
-        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#newBookingModal">Book This Plane!</button>
-        <% end %>
-      </div>
+            <% if policy(@plane).destroy? %>
+            <% else %>
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#newBookingModal">Book This Plane!</button>
+            <% end %>
+          </div>
+        </div>
     </div>
   </div>
-  <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @marker.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
-
 </div>
   <!-- Modal -->
 <div class="modal fade" id="newBookingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -76,24 +103,3 @@
     </div>
   </div>
 </div>
-
-
-
-<!-- Here some code for the reviews -->
-
-<h2>
-  <%= pluralize @plane.reviews.size, "review" %>
-</h2>
-
-<div id="reviews">
-  <% if @plane.reviews.blank? %>
-    Be the first to leave a review for <%= @plane.title %>
-  <% else %>
-    <% @plane.reviews.each do |review| %>
-      <p><%= review.content %></p>
-    <% end %>
-  <% end %>
-</div>
-
-<%= render 'reviews/form', plane: @plane, review: @review %>
-

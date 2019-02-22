@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 2019_02_22_142239) do
     t.integer "phone_number"
     t.boolean "admin"
     t.string "photo"
-    t.string "content"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
