@@ -1,4 +1,14 @@
 <div class="container">
+<<<<<<< HEAD
+  <%= render 'planes/details', plane: @plane %>
+  <div class="action">
+    <div class="plane-delete-book">
+      <div>
+        <% if policy(@plane).destroy? %>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletePlaneModal">Delete My Plane</button>
+        <% end %> <% if policy(@plane).update? %>
+          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editPlaneModal">Edit My Plane</button>
+=======
   <div class="top-show">
     <%= render 'details', plane: @plane %>
     <div
@@ -19,6 +29,7 @@
       <% else %>
         <% @plane.reviews.each do |review| %>
           <p><%= review.content %></p>
+>>>>>>> 43fec4fafd2d200026a5dd161bf90ffcb3d67223
         <% end %>
       <% end %>
       <%= render 'reviews/form', plane: @plane, review: @review %>
@@ -68,7 +79,7 @@
 
 <div class="modal fade" id="editPlaneModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document" style="border-radius: 20px">
-      <%= render 'edit', plane: @plane %>
+      <%= render 'planes/edit', plane: @plane %>
     </div>
   </div>
 </div>
