@@ -5,8 +5,7 @@
   background-position: center;
   color: white;
   position: relative;
-  margin: 10px 0;
-  border-radius: 7px;
+  border-radius: 7px 7px 0 0;
 }
 .card-user {
   position: absolute;
@@ -50,8 +49,22 @@
 }
 
 .card-footer {
-  margin-left: 12px;
+  padding-left: 12px;
+  height: 30px;
+  border: 1px solid rgba(180, 180, 180, 0.4);
+  border-radius: 0 0 7px 7px;
 }
+
+.card-manage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  ul {
+    margin: 0;
+  }
+}
+
 .card-link-footer:hover {
   text-decoration: none;
   color: $blue;
@@ -71,4 +84,15 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.manage-button {
+  margin-right: 10px;
+  height: 35px;
+  width: 170px;
+  font-size: 16px;
+}
+
+.col-xs-12 {
+  margin-bottom: 25px;
 }
