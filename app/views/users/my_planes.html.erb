@@ -32,10 +32,10 @@
               <li><%= plane.price %> €</li>
               <li><i class="fas fa-users"></i> <%= pluralize plane.capacity, 'passenger' %></li>
             </ul>
-            <button type="button" class="btn btn-primary manage-button" data-toggle="modal" data-target="#ManageBookingsModal">Manage bookings</button>
+            <button type="button" class="btn btn-primary manage-button" data-toggle="modal" data-target="#ManageBookingsModal#{plane.id}">Manage bookings</button>
           </div>
       <%# end %>
-      <div class="modal fade" id="ManageBookingsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal fade" id="ManageBookingsModal#{plane.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog ManageBookingsDialog" role="document" style="border-radius: 20px">
           <%= render 'bookings/manage_booking', plane: plane %>
         </div>
