@@ -30,7 +30,7 @@
           <div class="card-footer card-manage">
             <ul class="list-inline">
               <li><%= plane.price %> €</li>
-              <li><i class="fas fa-users"></i> <%= plane.capacity %> people</li>
+              <li><i class="fas fa-users"></i> <%= pluralize plane.capacity, 'passenger' %></li>
             </ul>
             <button type="button" class="btn btn-primary manage-button" data-toggle="modal" data-target="#ManageBookingsModal">Manage bookings</button>
           </div>
