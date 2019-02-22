@@ -1,42 +1,28 @@
-  <div class="plane-title">
-    <h1> <%= @plane.title %> </h1>
-  </div>
-  <div class="registration-model">
-    Model : <%= @plane.model %> - Registrations number: <%= @plane.registration_number %>
-  </div>
-    <p class="plane-image"> <%= image_path = @plane.photo.present? ? (cl_image_tag @plane.photo, height: 300, width: 400, crop: :fill) : "" %> </p>
-  <div class="description">
-    <%= @plane.description %>
-  </div>
-  <div class="price-capacity">
-    <i class="fas fa-euro-sign"></i> <%= @plane.price %> - <i class="fas fa-users"></i> <%= @plane.capacity %>
-  </div>
-  <div class="autonomy">
-    Maximum distance : <%= @plane.autonomy %> kms
-  </div>
-  <div class="airfield">
-    <i class="fas fa-map-marked-alt"></i> <%= @plane.airfield %>
-  </div>
-  <div class="pilot">
-    Pilot : <% if @plane.pilot %>
-              <i class="fas fa-check-circle"></i>
-              <% else %>
-              <i class="fas fa-times"></i>
-            <% end %>
-  </div>
-  <div class="plane-delete-book">
-    <div>
-      <% if policy(@plane).destroy? %>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletePlaneModal">Delete My Plane</button>
-      <% end %> <% if policy(@plane).update? %>
-        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editPlaneModal">Edit My Plane</button>
-      <% end %>
+<div class="container">
+  <%= render 'details', plane: @plane %>
+  <div class="action">
+    <div class="plane-delete-book">
+      <div>
+        <% if policy(@plane).destroy? %>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletePlaneModal">Delete My Plane</button>
+        <% end %> <% if policy(@plane).update? %>
+          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editPlaneModal">Edit My Plane</button>
+        <% end %>
 
 
-      <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#newBookingModal">Book This Plane!</button>
+        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#newBookingModal">Book This Plane!</button>
+      </div>
     </div>
   </div>
+  <div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @marker.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
 
+</div>
   <!-- Modal -->
 <div class="modal fade" id="newBookingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document" style="border-radius: 20px">
@@ -63,32 +49,7 @@
 
 <div class="modal fade" id="editPlaneModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document" style="border-radius: 20px">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title" id="myModalLabel editPlaneModal"></h3>
-          <h3><%= @plane.model %></h3>
-        </div>
-          <div class="modal-body" id="modalEditPlaneBody">
-            <%= simple_form_for @plane do |f| %>
-            <%= f.input :title %>
-            <%= f.input :photo %>
-            <%= f.input :photo_cache, as: :hidden %>
-            <%= f.input :model %>
-            <%= f.input :description %>
-            <%= f.input :price %>
-            <%= f.input :autonomy %>
-            <%= f.input :capacity %>
-            <%= f.input :airfield %>
-            <%= f.input :registration_number %>
-            <%= f.check_box :pilot %><span class="labelText">  Is There A Pilot In The Plane ?</span>
-            </div>
-        <div class="modal-footer" id="modalNewBookingFooter">
-          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cancel</button>
-          <%= f.button :submit, "Update Plane's Info", class: 'btn btn-primary btn-lg' %>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'edit', plane: @plane %>
     </div>
   </div>
 </div>
@@ -113,13 +74,6 @@
   </div>
 </div>
 
-<div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @marker.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
 
 
 <!-- Here some code for the reviews -->

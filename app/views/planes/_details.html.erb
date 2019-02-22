@@ -1,0 +1,28 @@
+<div id="details">
+  <div class="plane-title">
+    <h1> <%= plane.title %> </h1>
+  </div>
+  <div class="registration-model">
+    Model : <%= plane.model %> - Registrations number: <%= plane.registration_number %>
+  </div>
+    <p class="plane-image"> <%= image_path = plane.photo.present? ? (cl_image_tag plane.photo, height: 300, width: 400, crop: :fill) : "" %> </p>
+  <div class="description">
+    <%= plane.description %>
+  </div>
+  <div class="price-capacity">
+    <i class="fas fa-euro-sign"></i> <%= @plane.price %> - <i class="fas fa-users"></i> <%= plane.capacity %>
+  </div>
+  <div class="autonomy">
+    Maximum distance : <%= plane.autonomy %> kms
+  </div>
+  <div class="airfield">
+    <i class="fas fa-map-marked-alt"></i> <%= plane.airfield %>
+  </div>
+  <div class="pilot">
+    Pilot : <% if plane.pilot %>
+              <i class="fas fa-check-circle"></i>
+              <% else %>
+              <i class="fas fa-times"></i>
+            <% end %>
+  </div>
+</div>
