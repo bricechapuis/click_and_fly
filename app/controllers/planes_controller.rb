@@ -71,9 +71,15 @@ class PlanesController < ApplicationController
     authorize @plane
     @plane.update(plane_params)
     if @plane.save
-      redirect_to plane_path(@plane)
+      respond_to do |format|
+      format.html { redirect_to plane_path(@plane) }
+      format.js
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html { render 'planes/show'}
+        format.js
+      end
     end
   end
 

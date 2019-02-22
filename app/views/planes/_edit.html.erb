@@ -1,0 +1,26 @@
+<div class="modal-content" id="update-modal">
+  <div class="modal-header">
+    <button type="button" id="close-button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title" id="myModalLabel editPlaneModal"></h3>
+      <h3><%= plane.model %></h3>
+    </div>
+      <div class="modal-body" id="modalEditPlaneBody">
+        <%= simple_form_for(plane, remote: true) do |f| %>
+          <%= f.input :title %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.input :model %>
+          <%= f.input :description %>
+          <%= f.input :price %>
+          <%= f.input :autonomy %>
+          <%= f.input :capacity %>
+          <%= f.input :airfield %>
+          <%= f.input :registration_number %>
+          <%= f.check_box :pilot %><span class="labelText">  Is There A Pilot In The Plane ?</span>
+          <%= f.button :submit, "Update Plane's Info", class: 'btn btn-primary btn-lg' %>
+        <% end %>
+      </div>
+    <div class="modal-footer" id="modalNewBookingFooter">
+      <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cancel</button>
+    </div>
+  </div>
